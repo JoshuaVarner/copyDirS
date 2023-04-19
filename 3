@@ -1,0 +1,10 @@
+Set objShell = CreateObject("Shell.Application")
+Set objFolder = objShell.Namespace(&H10&)
+Set objUserFolder = objFolder.Self
+
+Set objShell = CreateObject("WScript.Shell")
+strUserProfile = objShell.ExpandEnvironmentStrings("%UserProfile%")
+
+objUserFolder.NameSpace("::{450D8FBA-AD25-11D0-98A8-0800361B1103}").Self.Path = strUserProfile & "\Documents"
+objUserFolder.NameSpace("::{4BD8D571-6D19-48D3-BE97-422220080E43}").Self.Path = strUserProfile & "\Music"
+objUserFolder.NameSpace("::{18989B1D-99B5-455B-841C-AB7C74E4DDFC}").Self.Path = strUserProfile & "\Videos"
