@@ -1,0 +1,29 @@
+' CopyMultipleDirectories.vbs
+Option Explicit
+
+Dim objFSO, arrSourceDirs, strTargetDir, strSourceDir
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+
+' Define the source directories and the target directory
+arrSourceDirs = Array("C:\SourceDir1", "C:\SourceDir2", "C:\SourceDir3")
+strTargetDir = "C:\TargetDir"
+
+' Check if target directory exists, if not, create it
+If Not objFSO.FolderExists(strTargetDir) Then
+    objFSO.CreateFolder(strTargetDir)
+End If
+
+' Loop through the source directories and copy them to the target directory
+For Each strSourceDir In arrSourceDirs
+    If objFSO.FolderExists(strSourceDir) Then
+        objFSO.CopyFolder strSourceDir, strTargetDir, True
+    Else
+        MsgBox "Source directory does not exist: " & strSourceDir, vbExclamation, "Directory Not Found"
+    End If
+Next
+
+' Display completion message
+MsgBox "Directories copied successfully!", vbInformation, "Success"
+
+' Clean up
+Set objFSO = Nothing
