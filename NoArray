@@ -1,0 +1,26 @@
+Option Explicit
+
+Dim objFSO, sourceFolder, destFolder, i
+
+Set objFSO = CreateObject("Scripting.FileSystemObject")
+
+' Define source folders and destination folders
+Set sourceFolder = objFSO.GetFolder("C:\SourceFolder1")
+Set destFolder = objFSO.GetFolder("D:\DestinationFolder1")
+objFSO.CopyFolder sourceFolder.Path, destFolder.Path, True
+
+Set sourceFolder = objFSO.GetFolder("C:\SourceFolder2")
+Set destFolder = objFSO.GetFolder("E:\DestinationFolder2")
+objFSO.CopyFolder sourceFolder.Path, destFolder.Path, True
+
+Set sourceFolder = objFSO.GetFolder("C:\SourceFolder3")
+Set destFolder = objFSO.GetFolder("F:\DestinationFolder3")
+objFSO.CopyFolder sourceFolder.Path, destFolder.Path, True
+
+Set sourceFolder = objFSO.GetFolder("C:\SourceFolder4")
+Set destFolder = objFSO.GetFolder("G:\DestinationFolder4")
+objFSO.CopyFolder sourceFolder.Path, destFolder.Path, True
+
+MsgBox "Folders transferred successfully."
+
+Set objFSO = Nothing
